@@ -1,17 +1,8 @@
-@import '~normalize.css/normalize.css';
-@import './base/colors';
-@import './base/breakpoints';
-@import './base/icon-fonts';
-@import './base/text-fonts';
-@import './base/base';
+@import './1-base/normalize';
+@import './1-base/colors';
+@import './1-base/breakpoints';
+@import './1-base/icon-fonts';
+@import './1-base/text-fonts';
+@import './1-base/base';
 
-// @import './components/main';
-// @import './components/intro';
-// @import './components/home';
-// @import './components/get-started';
-// @import './components/buttons';
-// @import './components/footer';
-// @import './components/mobile-menu';
-// @import './components/about';
-
-@import './components/**/*.scss';
+@import './2-components/**/*.scss';

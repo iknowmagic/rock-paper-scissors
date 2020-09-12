@@ -2,7 +2,7 @@ const globImporter = require('node-sass-glob-importer')
 
 module.exports = {
   configureWebpack: {
-    name: 'myteam',
+    name: 'Rock, Paper, Scissors, Lizard, Spock',
     /**
      * https://webpack.js.org/configuration/devtool/#devtool
      * https://blog.scottlogic.com/2017/11/01/webpack-source-map-options-quick-guide.html
