@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 12px;
+  padding: 9px;
   border: 3px solid rgba(255, 255, 255, 0.289199);
   border-radius: 5px;
 
@@ -44,7 +44,7 @@
   @include mq($from: mobile) {
     width: 100%;
     max-width: 700px;
-    padding: 18px 24px;
+    padding: 15px 24px;
     border-radius: 15px;
 
     .header-logo {

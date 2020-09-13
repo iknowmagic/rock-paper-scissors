@@ -4,10 +4,10 @@
   justify-content: center;
   width: 311px;
   height: 305px;
-  margin-top: 95px;
+  margin-top: 118px;
 
   @include mq($from: mobile) {
-    margin-top: 48px;
+    margin-top: 60px;
     zoom: 150%;
   }
 
@@ -22,16 +22,8 @@
     height: 227px;
     background-image: url('~@/assets/images/bg-pentagon.svg');
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: top 26px center;
     background-size: 227px 227px;
-  }
-
-  .icon.selected {
-    position: relative;
-    top: unset;
-    left: unset;
-    display: block;
-    zoom: 120%;
   }
 
   @mixin icon($border-bottom, $border-up, $icon-svg, $icon-size) {

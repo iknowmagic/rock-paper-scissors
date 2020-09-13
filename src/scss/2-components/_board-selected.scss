@@ -1,11 +1,14 @@
 .board-selected {
   @extend .board;
 
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: flex-start;
-  // width: 100%;
   display: block !important;
+  margin-top: 102px !important;
+
+  @include mq($from: mobile) {
+    width: 100% !important;
+    margin-top: 72px !important;
+    zoom: 100% !important;
+  }
 
   .selections {
     display: flex;
@@ -20,7 +23,11 @@
     bottom: unset !important;
     left: unset !important;
     cursor: default;
-    zoom: 120%;
+    zoom: 130%;
+
+    @include mq($from: mobile) {
+      zoom: 300%;
+    }
   }
   .icon-computer {
     position: relative !important;
@@ -30,12 +37,23 @@
     left: unset !important;
     width: 110px;
     height: 110px;
+    margin-bottom: 10px;
     cursor: default;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 
+    @include mq($from: mobile) {
+      width: 224.63px;
+      height: 224.63px;
+    }
+
     &.icon-computer-selected {
+      margin-bottom: 0;
       zoom: 120%;
+
+      @include mq($from: mobile) {
+        zoom: 300%;
+      }
     }
   }
 
@@ -44,8 +62,21 @@
     flex-direction: column;
     align-items: center;
 
+    .icon {
+      width: 125px;
+      height: 120px;
+    }
+
+    @include mq($from: mobile) {
+      flex-direction: column-reverse;
+      .icon {
+        width: 288px;
+        height: 276px;
+      }
+    }
+
     .selection-text {
-      margin-top: 17px;
+      margin-top: 28px;
       font-size: 15px;
       font-weight: 600;
       line-height: 32px;
@@ -54,50 +85,97 @@
       text-transform: uppercase;
       letter-spacing: 1.875px;
       white-space: nowrap;
+
+      @include mq($from: mobile) {
+        margin-top: 0;
+        margin-bottom: 78px;
+        font-size: 24px;
+        line-height: 32px;
+        letter-spacing: 3px;
+        &.computer-text {
+          padding-right: 53px;
+        }
+      }
     }
   }
 
   .selection-box + .selection-box {
-    margin-left: 67.32px;
-  }
-}
+    margin-left: 42.32px;
 
-.results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 90px;
-  text-transform: uppercase;
-
-  .results-text {
-    font-size: 56px;
-    font-weight: 600;
-    line-height: 67px;
-    color: #fff;
-    text-align: center;
-    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+    @include mq($from: mobile) {
+      margin-left: 153px;
+    }
   }
-  .play-again {
+
+  &.results-are-in {
+    .selection-box {
+      .selection-text {
+        @include mq($from: mobile) {
+          &.computer-text {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+    .selection-box + .selection-box {
+      @include mq($from: mobile) {
+        margin-left: 352px;
+      }
+    }
+  }
+
+  .results {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 220px;
-    height: 48px;
-    margin-top: 16px;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 19px;
-    color: #3b4262;
-    letter-spacing: 2.5px;
-    background: linear-gradient(0deg, #f3f3f3 0%, #fff 100%);
-    border-radius: 8px;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
-  }
-}
+    margin-top: 60px;
+    text-transform: uppercase;
 
-.winner {
-  border-radius: 50%;
-  box-shadow: 0 0 0 18px rgba(#fff, 0.05),
-    0 0 0 calc(18px + 33px) rgba(#fff, 0.05),
-    0 0 0 calc(18px + 33px + 32px) rgba(#fff, 0.05);
+    @include mq($from: mobile) {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      margin-top: 130px;
+      margin-left: -110px;
+    }
+
+    .results-text {
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 67px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+    }
+    .play-again {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 220px;
+      height: 48px;
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 19px;
+      color: #3b4262;
+      letter-spacing: 2.5px;
+      cursor: pointer;
+      background: linear-gradient(0deg, #f3f3f3 0%, #fff 100%);
+      border-radius: 8px;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+    }
+  }
+
+  .winner {
+    border-radius: 50%;
+    box-shadow: 0 0 0 18px rgba(#fff, 0.025),
+      0 0 0 calc(18px + 33px) rgba(#fff, 0.025),
+      0 0 0 calc(18px + 33px + 32px) rgba(#fff, 0.025);
+
+    @include mq($from: mobile) {
+      box-shadow: 0 0 0 64px rgba(#fff, 0.025),
+        0 0 0 calc(120px) rgba(#fff, 0.025), 0 0 0 calc(202px) rgba(#fff, 0.025);
+    }
+  }
 }

@@ -1,5 +1,8 @@
 <template>
-  <div class="board-selected">
+  <div
+    class="board-selected"
+    :class="{ 'results-are-in': userChoice && computerChoice }"
+  >
     <div class="selections">
       <div class="selection-box">
         <div class="icon" :class="{ winner: result && result === 'user wins' }">
@@ -10,7 +13,10 @@
         <div class="selection-text">You picked</div>
       </div>
       <div class="selection-box">
-        <div class="icon">
+        <div
+          class="icon"
+          :class="{ winner: result && result === 'computer wins' }"
+        >
           <div
             :class="[
               'icon-computer',
@@ -20,12 +26,14 @@
             ]"
           ></div>
         </div>
-        <div class="selection-text">The house picked</div>
+        <div class="selection-text computer-text">The house picked</div>
       </div>
     </div>
-    <div class="results">
-      <div class="results-text">You win</div>
-      <div class="play-again">Play again</div>
+    <div v-if="userChoice && computerChoice" class="results">
+      <div v-if="result === 'user wins'" class="results-text">You win</div>
+      <div v-if="result === 'computer wins'" class="results-text">You lose</div>
+      <div v-if="result === 'tie'" class="results-text">It's a tie</div>
+      <div class="play-again" @click="playAgain">Play again</div>
     </div>
   </div>
 </template>
@@ -33,33 +41,37 @@
 <script>
 // @flow
 
-import { get } from 'vuex-pathify'
+import { sync } from 'vuex-pathify'
 import _random from 'lodash/random'
+import _includes from 'lodash/includes'
 import sleep from '@/helpers/sleep'
 
 export default {
   name: 'BoardSelected',
   data() {
     return {
-      choices: ['rock', 'spock', 'paper', 'lizard', 'scissors'],
+      choices: ['rock', 'paper', 'scissors', 'lizard', 'spock'],
       computerChoice: undefined,
       result: undefined
     }
   },
   computed: {
-    userChoice: get('game/userChoice')
+    userChoice: sync('game/userChoice'),
+    score: sync('game/score')
   },
   mounted() {
-    // this.init()
+    this.init()
   },
 
   methods: {
     async init() {
-      await sleep(1000)
-      this.computerChoice = this.computerSelection()
-      await sleep(1000)
-      this.result = this.compareResults(this.userChoice, this.computerChoice)
-      console.log(this.result)
+      await sleep(500)
+      const computerChoice = this.computerSelection()
+      const result = this.compareResults(this.userChoice, computerChoice)
+      this.computerChoice = computerChoice
+      this.result = result
+      if (this.result === 'tie') return
+      this.score = this.result === 'user wins' ? this.score + 1 : this.score - 1
     },
 
     computerSelection() {
@@ -67,32 +79,19 @@ export default {
       return this.choices[numericChoice]
     },
     compareResults(userChoice: string, computerChoice: string) {
-      /**
-       * From: https://stackoverflow.com/questions/17976883/rock-paper-scissors-in-javascript
-       */
-
-      var choices = this.choices
-      var map = {}
-
-      choices.forEach(function (choice, i) {
-        map[choice] = {}
-        for (
-          var j = 0, half = (choices.length - 1) / 2;
-          j < choices.length;
-          j++
-        ) {
-          var opposition = (i + j) % choices.length
-          if (!j) map[choice][choice] = 'Was a tie'
-          else if (j <= half) map[choice][choices[opposition]] = 'user wins'
-          else map[choice][choices[opposition]] = 'computer wins'
-        }
-      })
-
-      function compare(choice1, choice2) {
-        return (map[choice1] || {})[choice2] || 'invalid choice'
+      const winningMap = {
+        rock: ['lizard', 'scissors'],
+        paper: ['rock', 'spock'],
+        scissors: ['paper', 'lizard'],
+        lizard: ['spock', 'paper'],
+        spock: ['scissors', 'rock']
       }
-
-      return compare(userChoice, computerChoice)
+      if (_includes(winningMap[userChoice], computerChoice)) return 'user wins'
+      if (userChoice === computerChoice) return 'tie'
+      return 'computer wins'
+    },
+    playAgain() {
+      this.userChoice = undefined
     }
   }
 }

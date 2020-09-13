@@ -3,10 +3,10 @@
   justify-content: center;
   width: 100%;
   margin-top: auto;
-  margin-bottom: -20px;
 
   @include mq($from: mobile) {
     justify-content: flex-end;
+    margin-bottom: -17px;
   }
 }
 .btn-rules {
