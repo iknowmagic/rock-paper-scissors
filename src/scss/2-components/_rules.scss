@@ -23,6 +23,11 @@
   cursor: pointer;
   border: 1px solid #fff;
   border-radius: 8px;
+
+  &:hover {
+    color: #3b4262;
+    background: linear-gradient(0deg, #f3f3f3 0%, #fff 100%);
+  }
 }
 
 .rules-modal {
