@@ -2,6 +2,7 @@
   <div class="game">
     <game-header />
     <board />
+    <board-result />
     <rules />
   </div>
 </template>
