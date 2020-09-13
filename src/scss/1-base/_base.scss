@@ -9,7 +9,12 @@ body {
   height: 100%;
   font-family: $font-family;
   font-size: 16px;
-  font-weight: $text-regular;
-  background-color: #fafafa;
+  font-weight: $normal;
+  color: #fff;
+  background: radial-gradient(
+    134.34% 134.34% at 50% 0%,
+    #1f3757 0%,
+    #131537 100%
+  );
   text-rendering: geometricPrecision;
 }
