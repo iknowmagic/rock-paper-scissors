@@ -2,9 +2,9 @@
   @extend .board;
 
   display: block !important;
-  margin-top: 102px !important;
+  margin-top: 0 !important;
 
-  @include mq($from: mobile) {
+  @include mq($from: tablet) {
     width: 100% !important;
     margin-top: 72px !important;
     zoom: 100% !important;
@@ -25,7 +25,7 @@
     cursor: default;
     zoom: 130%;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       zoom: 300%;
     }
   }
@@ -42,16 +42,16 @@
     background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       width: 224.63px;
       height: 224.63px;
     }
 
     &.icon-computer-selected {
       margin-bottom: 0;
-      zoom: 120%;
+      zoom: 130%;
 
-      @include mq($from: mobile) {
+      @include mq($from: tablet) {
         zoom: 300%;
       }
     }
@@ -67,7 +67,7 @@
       height: 120px;
     }
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       flex-direction: column-reverse;
       .icon {
         width: 288px;
@@ -86,7 +86,7 @@
       letter-spacing: 1.875px;
       white-space: nowrap;
 
-      @include mq($from: mobile) {
+      @include mq($from: tablet) {
         margin-top: 0;
         margin-bottom: 78px;
         font-size: 24px;
@@ -102,7 +102,7 @@
   .selection-box + .selection-box {
     margin-left: 42.32px;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       margin-left: 153px;
     }
   }
@@ -110,7 +110,7 @@
   &.results-are-in {
     .selection-box {
       .selection-text {
-        @include mq($from: mobile) {
+        @include mq($from: tablet) {
           &.computer-text {
             padding-right: 0;
           }
@@ -119,7 +119,7 @@
     }
 
     .selection-box + .selection-box {
-      @include mq($from: mobile) {
+      @include mq($from: tablet) {
         margin-left: 352px;
       }
     }
@@ -132,7 +132,7 @@
     margin-top: 60px;
     text-transform: uppercase;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       position: absolute;
       top: 30px;
       left: 50%;
@@ -173,7 +173,7 @@
       0 0 0 calc(18px + 33px) rgba(#fff, 0.025),
       0 0 0 calc(18px + 33px + 32px) rgba(#fff, 0.025);
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       box-shadow: 0 0 0 64px rgba(#fff, 0.025),
         0 0 0 calc(120px) rgba(#fff, 0.025), 0 0 0 calc(202px) rgba(#fff, 0.025);
     }

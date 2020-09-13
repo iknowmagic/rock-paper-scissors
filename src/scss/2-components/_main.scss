@@ -5,7 +5,7 @@
   height: 100%;
   padding: 32px 32px 56px;
 
-  @include mq($from: mobile) {
+  @include mq($from: tablet) {
     padding: 48px 32px;
   }
 }

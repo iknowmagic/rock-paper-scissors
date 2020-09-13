@@ -4,10 +4,10 @@
   justify-content: center;
   width: 311px;
   height: 305px;
-  margin-top: 118px;
+  margin-top: auto;
 
-  @include mq($from: mobile) {
-    margin-top: 60px;
+  @include mq($from: tablet) {
+    margin-top: 75px;
     zoom: 150%;
   }
 
@@ -22,7 +22,7 @@
     height: 227px;
     background-image: url('~@/assets/images/bg-pentagon.svg');
     background-repeat: no-repeat;
-    background-position: top 26px center;
+    background-position: center;
     background-size: 227px 227px;
   }
 
@@ -81,7 +81,7 @@
       32px 31px
     );
 
-    top: 180px;
+    top: 172px;
     right: 40px;
   }
   .icon-paper {
@@ -92,7 +92,7 @@
       32px 39px
     );
 
-    top: 60px;
+    top: 50px;
     right: 0;
   }
   .icon-scissors {
@@ -103,7 +103,7 @@
       35px 35px
     );
 
-    top: -20px;
+    top: -36px;
   }
   .icon-lizard {
     @include icon(
@@ -113,7 +113,7 @@
       39px 38px
     );
 
-    top: 180px;
+    top: 172px;
     left: 40px;
   }
   .icon-spock {
@@ -124,7 +124,7 @@
       29px 39px
     );
 
-    top: 60px;
+    top: 50px;
     left: 0;
   }
 }

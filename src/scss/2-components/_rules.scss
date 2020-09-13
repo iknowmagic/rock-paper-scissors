@@ -4,7 +4,7 @@
   width: 100%;
   margin-top: auto;
 
-  @include mq($from: mobile) {
+  @include mq($from: tablet) {
     justify-content: flex-end;
     margin-bottom: -17px;
   }
@@ -39,7 +39,7 @@
   border-radius: 8px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
 
-  @include mq($from: mobile) {
+  @include mq($from: tablet) {
     top: 154px;
     left: 50%;
     width: 400px;
@@ -55,7 +55,7 @@
     color: #3b4262;
     text-transform: uppercase;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       width: 100%;
       text-align: left;
     }
@@ -63,7 +63,7 @@
   .modal-image {
     margin-top: 96px;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       margin-top: 20px;
     }
   }
@@ -71,7 +71,7 @@
     margin-top: auto;
     cursor: pointer;
 
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
       position: absolute;
       top: 37px;
       right: 32px;
