@@ -5,7 +5,7 @@
     </div>
     <div class="header-score">
       <div class="score-text">score</div>
-      <div class="score-number">12</div>
+      <div class="score-number">{{ score }}</div>
     </div>
   </div>
 </template>
@@ -13,7 +13,12 @@
 <script>
 // @flow
 
+import { get } from 'vuex-pathify'
+
 export default {
-  name: 'GameHeader'
+  name: 'GameHeader',
+  computed: {
+    score: get('game/score')
+  }
 }
 </script>

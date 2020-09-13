@@ -11,6 +11,12 @@
     zoom: 150%;
   }
 
+  &.selected {
+    > div {
+      display: none;
+    }
+  }
+
   .board-bg {
     width: 227px;
     height: 227px;
@@ -18,6 +24,14 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 227px 227px;
+  }
+
+  .icon.selected {
+    position: relative;
+    top: unset;
+    left: unset;
+    display: block;
+    zoom: 120%;
   }
 
   @mixin icon($border-bottom, $border-up, $icon-svg, $icon-size) {
@@ -64,6 +78,7 @@
   }
 
   .icon {
+    cursor: pointer;
   }
 
   .icon-rock {

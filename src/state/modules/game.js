@@ -2,7 +2,10 @@
 
 import { make } from 'vuex-pathify'
 
-export const state = {}
+export const state = {
+  score: 0,
+  userChoice: undefined
+}
 
 export const getters = {
   ...make.getters(state)
