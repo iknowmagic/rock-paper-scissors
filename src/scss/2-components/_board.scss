@@ -6,6 +6,11 @@
   height: 305px;
   margin-top: 95px;
 
+  @include mq($from: mobile) {
+    margin-top: 48px;
+    zoom: 150%;
+  }
+
   .board-bg {
     width: 227px;
     height: 227px;
@@ -14,11 +19,6 @@
     background-position: center center;
     background-size: 227px 227px;
   }
-
-  // $border-bottom: #9d1634;
-  // $border-up: #db2e4d;
-  // $icon-svg: url('~@/assets/images/icon-rock.svg');
-  // $icon-size: 32px 31px;
 
   @mixin icon($border-bottom, $border-up, $icon-svg, $icon-size) {
     position: absolute;
