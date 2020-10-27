@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@sentry/browser": "^5.23.0",
-    "@sentry/integrations": "^5.23.0",
+    "@sentry/integrations": "^5.25.0",
     "@sentry/tracing": "^5.23.0",
     "alasql": "^0.6.4",
     "axios": "^0.20.0",
