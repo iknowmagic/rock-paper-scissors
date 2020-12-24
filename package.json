@@ -16,7 +16,7 @@
     "@sentry/integrations": "^5.23.0",
     "@sentry/tracing": "^5.23.0",
     "alasql": "^0.6.4",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.20",
