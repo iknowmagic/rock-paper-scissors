@@ -10,37 +10,39 @@ function BoardSelected({ onPlayAgain }: BoardSelectedProps) {
   const result = useGameStore((state) => state.result)
 
   return (
-    <div className={`board-selected ${result ? 'results-are-in' : ''}`}>
+    <div
+      className={`board-selected ${userChoice && computerChoice ? 'results-are-in' : ''}`}
+    >
       <div className="selections">
         <div className="selection-box">
-          <div
-            className={`icon icon-${userChoice} icon-user ${result === 'win' ? 'winner' : ''}`}
-          ></div>
-          <span className="selection-text">You picked</span>
+          <div className={`icon ${result === 'win' ? 'winner' : ''}`}>
+            <div
+              className={`icon-user ${userChoice ? `icon-${userChoice}` : ''}`}
+            ></div>
+          </div>
+          <div className="selection-text">You picked</div>
         </div>
 
         <div className="selection-box">
-          {computerChoice ? (
+          <div className={`icon ${result === 'lose' ? 'winner' : ''}`}>
             <div
-              className={`icon icon-${computerChoice} icon-computer icon-computer-selected ${result === 'lose' ? 'winner' : ''}`}
+              className={`icon-computer ${computerChoice ? `icon-computer-selected icon-${computerChoice}` : ''}`}
             ></div>
-          ) : (
-            <div className="icon-computer"></div>
-          )}
-          <span className="selection-text computer-text">The house picked</span>
+          </div>
+          <div className="selection-text computer-text">The house picked</div>
         </div>
       </div>
 
-      {result && (
+      {userChoice && computerChoice && (
         <div className="results">
-          <h2 className="results-text">
+          <div className="results-text">
             {result === 'win' && 'You win'}
             {result === 'lose' && 'You lose'}
-            {result === 'draw' && 'Draw'}
-          </h2>
-          <button className="play-again" onClick={onPlayAgain}>
+            {result === 'draw' && "It's a tie"}
+          </div>
+          <div className="play-again" onClick={onPlayAgain}>
             Play Again
-          </button>
+          </div>
         </div>
       )}
     </div>
