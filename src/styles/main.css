@@ -587,6 +587,29 @@ body {
   }
 }
 
+/* Add this to your main.css file */
+
+/* Additional winner styling for proper positioning */
+.board-selected .icon.winner {
+  position: relative;
+}
+
+.board-selected .icon.winner::before {
+  content: '';
+  position: absolute;
+  top: -64px;
+  left: -64px;
+  width: calc(100% + 128px);
+  height: calc(100% + 128px);
+  border-radius: 50%;
+  background: transparent;
+  z-index: -1;
+  box-shadow:
+    0 0 0 64px rgba(255, 255, 255, 0.025),
+    0 0 0 120px rgba(255, 255, 255, 0.025),
+    0 0 0 202px rgba(255, 255, 255, 0.025);
+}
+
 /* Rules Component */
 .rules {
   display: flex;

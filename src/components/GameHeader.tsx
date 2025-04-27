@@ -1,8 +1,8 @@
-interface GameHeaderProps {
-  score: number
-}
+import { useGameStore } from '@/store/useGameStore'
 
-function GameHeader({ score }: GameHeaderProps) {
+function GameHeader() {
+  const score = useGameStore((state) => state.score)
+
   return (
     <header className="header">
       <div className="header-logo">

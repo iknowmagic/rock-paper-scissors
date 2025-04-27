@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Home from '@/pages/Home'
-import Rules from '@/components/Rules' // Import the Rules component
-import '@/main.css'
+import Rules from '@/components/Rules'
 
 function App() {
   const [showRules, setShowRules] = useState(false)
@@ -11,9 +10,9 @@ function App() {
       <Home />
       {showRules && <Rules onClose={() => setShowRules(false)} />}
       <div className="rules">
-        <button className="btn-rules" onClick={() => setShowRules(true)}>
+        <div className="btn-rules" onClick={() => setShowRules(true)}>
           Rules
-        </button>
+        </div>
       </div>
     </div>
   )

@@ -11,10 +11,8 @@ function Home() {
   const determineWinner = useGameStore((state) => state.determineWinner)
   const updateScore = useGameStore((state) => state.updateScore)
   const resetChoices = useGameStore((state) => state.resetChoices)
-  const score = useGameStore((state) => state.score)
 
   useEffect(() => {
-    // When userChoice changes, trigger computer choice and determine winner
     if (userChoice) {
       const timer = setTimeout(() => {
         setComputerChoice()
@@ -25,16 +23,16 @@ function Home() {
   }, [userChoice, setComputerChoice])
 
   useEffect(() => {
-    // When computer makes a choice, determine the winner
     if (userChoice && computerChoice) {
       determineWinner()
     }
   }, [computerChoice, userChoice, determineWinner])
 
   useEffect(() => {
-    // Update score when a winner is determined
-    updateScore()
-  }, [determineWinner, updateScore])
+    if (computerChoice) {
+      updateScore()
+    }
+  }, [determineWinner, updateScore, computerChoice])
 
   const handlePlayAgain = () => {
     resetChoices()
@@ -42,8 +40,12 @@ function Home() {
 
   return (
     <main>
-      <GameHeader score={score} />
-      {userChoice ? <BoardSelected onPlayAgain={handlePlayAgain} /> : <Board />}
+      <GameHeader />
+      {!userChoice ? (
+        <Board />
+      ) : (
+        <BoardSelected onPlayAgain={handlePlayAgain} />
+      )}
     </main>
   )
 }

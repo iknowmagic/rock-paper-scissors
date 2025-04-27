@@ -16,18 +16,20 @@ function BoardSelected({ onPlayAgain }: BoardSelectedProps) {
       <div className="selections">
         <div className="selection-box">
           <div className={`icon ${result === 'win' ? 'winner' : ''}`}>
-            <div
-              className={`icon-user ${userChoice ? `icon-${userChoice}` : ''}`}
-            ></div>
+            <div className={`icon-user icon-${userChoice}`}></div>
           </div>
           <div className="selection-text">You picked</div>
         </div>
 
         <div className="selection-box">
           <div className={`icon ${result === 'lose' ? 'winner' : ''}`}>
-            <div
-              className={`icon-computer ${computerChoice ? `icon-computer-selected icon-${computerChoice}` : ''}`}
-            ></div>
+            {computerChoice ? (
+              <div
+                className={`icon-computer icon-computer-selected icon-${computerChoice}`}
+              ></div>
+            ) : (
+              <div className="icon-computer"></div>
+            )}
           </div>
           <div className="selection-text computer-text">The house picked</div>
         </div>
