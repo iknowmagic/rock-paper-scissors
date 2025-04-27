@@ -1,68 +1,78 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useGameStore, useGameLogic } from '../store/useGameStore'
 
 function BoardSelected() {
-  // Game state hooks
-  const {
-    userChoice,
-    computerChoice,
-    result,
-    resetGame,
-    setComputerChoice,
-    setResult,
-    updateScore,
-  } = useGameStore((state) => ({
-    userChoice: state.userChoice,
-    computerChoice: state.computerChoice,
-    result: state.result,
-    resetGame: state.resetGame,
-    setComputerChoice: state.setComputerChoice,
-    setResult: state.setResult,
-    updateScore: state.updateScore,
-  }))
+  // Get everything we need from the store
+  const userChoice = useGameStore((state) => state.userChoice)
+  const computerChoice = useGameStore((state) => state.computerChoice)
+  const result = useGameStore((state) => state.result)
+  const setComputerChoice = useGameStore((state) => state.setComputerChoice)
+  const setResult = useGameStore((state) => state.setResult)
+  const updateScore = useGameStore((state) => state.updateScore)
+  const resetGame = useGameStore((state) => state.resetGame)
 
   // Game logic
   const { getComputerChoice, determineWinner } = useGameLogic()
 
-  // Loading state to handle computer's "thinking" time
+  // Loading state
   const [isLoading, setIsLoading] = useState(true)
 
-  // Handle game logic when component mounts
+  // Use ref to track if initialization has happened
+  const initializedRef = useRef(false)
+
+  // Initialize when component mounts or when dependencies change
   useEffect(() => {
-    const calculateResult = async () => {
-      // Simulate thinking delay
+    // Skip if already initialized or if computerChoice is already set
+    if (initializedRef.current || computerChoice) {
+      return
+    }
+
+    const init = async () => {
+      // Simulate delay
       await new Promise((resolve) => setTimeout(resolve, 500))
 
-      // Calculate computer choice and result
+      // Get computer choice
       const compChoice = getComputerChoice()
       setComputerChoice(compChoice)
 
+      // Determine winner
       const gameResult = determineWinner(userChoice, compChoice)
       setResult(gameResult)
 
-      // Update score based on result (skip if tie)
+      // Update score if not a tie
       if (gameResult !== 'tie') {
         updateScore(gameResult)
       }
 
       setIsLoading(false)
+      initializedRef.current = true
     }
 
-    calculateResult()
+    init()
+
+    // Reset the ref when userChoice changes (for new rounds)
+    return () => {
+      if (userChoice !== computerChoice) {
+        initializedRef.current = false
+      }
+    }
   }, [
     userChoice,
+    computerChoice,
+    getComputerChoice,
+    determineWinner,
     setComputerChoice,
     setResult,
     updateScore,
-    getComputerChoice,
-    determineWinner,
   ])
 
   const playAgain = () => {
     resetGame()
+    // Reset our initialization tracker for the next round
+    initializedRef.current = false
   }
 
-  const resultsAreIn = userChoice && computerChoice
+  const resultsAreIn = Boolean(userChoice && computerChoice)
 
   return (
     <div className="board-selected" data-results-are-in={resultsAreIn}>
