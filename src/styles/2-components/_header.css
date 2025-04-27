@@ -40,6 +40,21 @@
   font-weight: var(--bold);
   line-height: 40px;
   color: #565468;
+  transition: transform 0.2s ease;
+}
+
+.header .header-score .score-number.updated {
+  animation: scoreUpdate 0.5s ease;
+}
+
+@keyframes scoreUpdate {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
 }
 
 @media (min-width: 769px) {

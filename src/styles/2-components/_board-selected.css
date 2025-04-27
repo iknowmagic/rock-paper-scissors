@@ -286,33 +286,127 @@
 }
 
 .board-selected .results .play-again {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 220px;
-  height: 48px;
-  margin-top: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 19px;
-  color: #3b4262;
-  letter-spacing: 2.5px;
-  cursor: pointer;
-  background: linear-gradient(0deg, #f3f3f3 0%, #fff 100%);
-  border-radius: 8px;
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+  /* ...existing styles... */
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .board-selected .results .play-again:hover {
-  color: #db2e4d;
+  /* ...existing styles... */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.board-selected .results .play-again:active {
+  transform: translateY(1px);
+}
+
+/* Add transitions for results animations */
+.board-selected {
+  /* ...existing styles... */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.4s forwards ease-out;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add animations for winner highlight */
 .board-selected .winner {
   border-radius: 50%;
   box-shadow:
     0 0 0 18px rgba(255, 255, 255, 0.025),
     0 0 0 calc(18px + 33px) rgba(255, 255, 255, 0.025),
     0 0 0 calc(18px + 33px + 32px) rgba(255, 255, 255, 0.025);
+  animation: pulseWinner 2s infinite;
+}
+
+@keyframes pulseWinner {
+  0% {
+    box-shadow:
+      0 0 0 18px rgba(255, 255, 255, 0.03),
+      0 0 0 calc(18px + 33px) rgba(255, 255, 255, 0.02),
+      0 0 0 calc(18px + 33px + 32px) rgba(255, 255, 255, 0.01);
+  }
+  50% {
+    box-shadow:
+      0 0 0 20px rgba(255, 255, 255, 0.05),
+      0 0 0 calc(20px + 35px) rgba(255, 255, 255, 0.04),
+      0 0 0 calc(20px + 35px + 35px) rgba(255, 255, 255, 0.03);
+  }
+  100% {
+    box-shadow:
+      0 0 0 18px rgba(255, 255, 255, 0.03),
+      0 0 0 calc(18px + 33px) rgba(255, 255, 255, 0.02),
+      0 0 0 calc(18px + 33px + 32px) rgba(255, 255, 255, 0.01);
+  }
+}
+
+/* Computer selection animation */
+.board-selected .icon-computer {
+  position: relative !important;
+  top: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  left: unset !important;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 10px;
+  cursor: default;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+.board-selected .icon-computer.icon-computer-selected {
+  margin-bottom: 0;
+  zoom: 130%;
+  animation: none;
+  transform: scale(0);
+  opacity: 0;
+  animation: revealComputer 0.5s forwards 0.5s; /* Delay to simulate "thinking" */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes revealComputer {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Results text and button animation */
+.board-selected .results {
+  margin-top: 60px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: showResults 0.4s forwards 1s;
+}
+
+@keyframes showResults {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (min-width: 769px) {

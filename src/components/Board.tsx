@@ -1,10 +1,10 @@
-import { useGameStore, type Choice } from '@/store/useGameStore'
+interface BoardProps {
+  onSelect: (_choice: string) => void
+}
 
-function Board() {
-  const setUserChoice = useGameStore((state) => state.setUserChoice)
-
-  const handleSelection = (choice: Choice) => {
-    setUserChoice(choice)
+function Board({ onSelect }: BoardProps) {
+  const handleSelection = (choice: string) => {
+    onSelect(choice)
   }
 
   return (

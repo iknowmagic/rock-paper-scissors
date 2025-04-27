@@ -1,17 +1,29 @@
 # Rock Paper Scissors Lizard Spock Game
 
-A React implementation of the expanded Rock Paper Scissors game from The Big Bang Theory, ported from a Vue.js codebase.
+A React implementation of the expanded Rock Paper Scissors game, adapted from an earlier Vue.js implementation.
 
 ## Project Overview
 
-This project is a React/TypeScript port of a Vue.js Rock Paper Scissors Lizard Spock game. The implementation prioritizes maintaining the exact same layout, styling, and user experience from the original Vue application.
+This project is a React/TypeScript version of a Rock Paper Scissors Lizard Spock game. The implementation prioritizes maintaining the exact same layout, styling, and user experience from the original application.
 
 ## Key Features
 
-- Standard CSS instead of TailwindCSS for accurate style reproduction
-- Zustand for state management (replacing Vuex)
-- Game logic moved from Vue components to React hooks
-- Responsive design that matches the original exactly
+- Modular CSS architecture for better organization and maintainability
+- Component-based styling with logical folder structure
+- Zustand for lightweight state management (replacing Vuex)
+- Responsive design with mobile and desktop layouts
+- Smooth transitions and animations
+- Fixed positioning elements that work across screen sizes
+
+---
+
+## Responsive Previews
+
+| Desktop                        | Tablet                        | Mobile                        |
+| ------------------------------ | ----------------------------- | ----------------------------- |
+| ![](public/readme/desktop.png) | ![](public/readme/tablet.png) | ![](public/readme/mobile.png) |
+
+---
 
 ## Game Rules
 
@@ -55,8 +67,11 @@ This game expands on the traditional Rock Paper Scissors with two additional mov
 │   │   └── Home.tsx            # Main game page
 │   ├── store/
 │   │   └── useGameStore.tsx    # Zustand store
+│   ├── styles/
+│   │   └── 2-components/       # Component-specific styles
+│   │       └── _rules.css      # Rules component styling
 │   ├── App.tsx                 # Main app component
-│   ├── main.css                # All styles for the game
+│   ├── main.css                # Global styles
 │   └── main.tsx                # Entry point
 ├── index.html
 ├── package.json
@@ -64,17 +79,14 @@ This game expands on the traditional Rock Paper Scissors with two additional mov
 └── vite.config.ts
 ```
 
-## Notable Changes from Vue Version
+## CSS Architecture
 
-1. Replaced Vuex with Zustand for simpler state management
-2. Moved from SCSS to regular CSS with identical styling
-3. Implemented game logic directly in React components with hooks
-4. Maintained exact positioning and layout of elements
-5. Recreated all transitions and animations
+The project uses a structured CSS approach with:
 
-## Assets
-
-All images and icons are stored in the `public/assets/images` directory and are referenced in the same way as the original Vue application.
+- Component-specific stylesheets in dedicated folders
+- Fixed positioning for consistent UI elements
+- Media queries for responsive design
+- Clean class naming conventions
 
 ## How To Play
 

@@ -7,10 +7,19 @@ import { useGameStore } from '@/store/useGameStore'
 function Home() {
   const userChoice = useGameStore((state) => state.userChoice)
   const computerChoice = useGameStore((state) => state.computerChoice)
+  const setUserChoice = useGameStore((state) => state.setUserChoice)
   const setComputerChoice = useGameStore((state) => state.setComputerChoice)
   const determineWinner = useGameStore((state) => state.determineWinner)
   const updateScore = useGameStore((state) => state.updateScore)
   const resetChoices = useGameStore((state) => state.resetChoices)
+
+  // Update Choice type to include all five options
+  type Choice = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock'
+
+  // Adjust handler to match Board component's expected prop type
+  const handleSelect = (choice: string) => {
+    setUserChoice(choice as Choice)
+  }
 
   useEffect(() => {
     if (userChoice) {
@@ -41,11 +50,16 @@ function Home() {
   return (
     <main>
       <GameHeader />
-      {!userChoice ? (
-        <Board />
-      ) : (
-        <BoardSelected onPlayAgain={handlePlayAgain} />
-      )}
+      {/* Replace the SwitchTransition with a simple conditional rendering with CSS classes */}
+      <div
+        className={`game-container ${userChoice ? 'showing-result' : 'showing-selection'}`}
+      >
+        {userChoice ? (
+          <BoardSelected onPlayAgain={handlePlayAgain} />
+        ) : (
+          <Board onSelect={handleSelect} />
+        )}
+      </div>
     </main>
   )
 }
