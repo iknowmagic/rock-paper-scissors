@@ -1,11 +1,10 @@
-import React from 'react'
+import { useGameStore } from '../store/useGameStore'
 import GameHeader from '../components/GameHeader'
 import Board from '../components/Board'
 import BoardSelected from '../components/BoardSelected'
 import Rules from '../components/Rules'
-import { useGameStore } from '../store/useGameStore'
 
-const Home: React.FC = () => {
+function Home() {
   const userChoice = useGameStore((state) => state.userChoice)
 
   return (

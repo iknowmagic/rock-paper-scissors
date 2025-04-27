@@ -1,6 +1,6 @@
-import { useGameStore, GameChoice } from '@/store/useGameStore'
+import { useGameStore, GameChoice } from '../store/useGameStore'
 
-const Board = () => {
+function Board() {
   const setUserChoice = useGameStore((state) => state.setUserChoice)
 
   const handleSelection = (choice: GameChoice) => {
@@ -11,24 +11,29 @@ const Board = () => {
     <div className="board">
       <div className="board-bg"></div>
       <div
-        className="icon icon-scissors"
-        onClick={() => handleSelection('scissors')}
+        className="icon icon-rock"
+        onClick={() => handleSelection('rock')}
+        data-testid="choice-rock"
       ></div>
       <div
         className="icon icon-paper"
         onClick={() => handleSelection('paper')}
+        data-testid="choice-paper"
       ></div>
       <div
-        className="icon icon-rock"
-        onClick={() => handleSelection('rock')}
+        className="icon icon-scissors"
+        onClick={() => handleSelection('scissors')}
+        data-testid="choice-scissors"
       ></div>
       <div
         className="icon icon-lizard"
         onClick={() => handleSelection('lizard')}
+        data-testid="choice-lizard"
       ></div>
       <div
         className="icon icon-spock"
         onClick={() => handleSelection('spock')}
+        data-testid="choice-spock"
       ></div>
     </div>
   )

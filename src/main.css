@@ -28,6 +28,10 @@ body {
   text-rendering: geometricPrecision;
 }
 
+#root {
+  height: 100%;
+}
+
 /* Game container */
 .game {
   display: flex;
@@ -151,7 +155,7 @@ body {
 .board-bg {
   width: 227px;
   height: 227px;
-  background-image: url('./assets/images/bg-pentagon.svg');
+  background-image: url('/assets/images/bg-pentagon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 227px 227px;
@@ -200,7 +204,7 @@ body {
   border: 10px solid #c76c1b;
 }
 .icon-scissors::after {
-  background-image: url('./assets/images/icon-scissors.svg');
+  background-image: url('/assets/images/icon-scissors.svg');
   background-size: 35px 35px;
   border: 10px solid #eb9f0e;
 }
@@ -211,7 +215,7 @@ body {
   border: 10px solid #2a45c2;
 }
 .icon-paper::after {
-  background-image: url('./assets/images/icon-paper.svg');
+  background-image: url('/assets/images/icon-paper.svg');
   background-size: 32px 39px;
   border: 10px solid #4664f4;
 }
@@ -222,7 +226,7 @@ body {
   border: 10px solid #9d1634;
 }
 .icon-rock::after {
-  background-image: url('./assets/images/icon-rock.svg');
+  background-image: url('/assets/images/icon-rock.svg');
   background-size: 32px 31px;
   border: 10px solid #db2e4d;
 }
@@ -233,7 +237,7 @@ body {
   border: 10px solid #5f37a8;
 }
 .icon-lizard::after {
-  background-image: url('./assets/images/icon-lizard.svg');
+  background-image: url('/assets/images/icon-lizard.svg');
   background-size: 39px 38px;
   border: 10px solid #834ee3;
 }
@@ -244,22 +248,25 @@ body {
   border: 10px solid #2d8dab;
 }
 .icon-spock::after {
-  background-image: url('./assets/images/icon-spock.svg');
+  background-image: url('/assets/images/icon-spock.svg');
   background-size: 29px 39px;
   border: 10px solid #3fb7cd;
 }
 
 /* Board selected styles */
 .board-selected {
-  display: block !important;
-  margin-top: 0 !important;
+  position: relative;
+  display: block;
+  width: 311px;
+  height: 305px;
+  margin-top: 0;
 }
 
 @media (min-width: 769px) {
   .board-selected {
-    width: 100% !important;
-    margin-top: 72px !important;
-    zoom: 100% !important;
+    width: 100%;
+    margin-top: 72px;
+    zoom: 100%;
   }
 }
 
@@ -270,11 +277,11 @@ body {
 }
 
 .board-selected .icon-user {
-  position: relative !important;
-  top: unset !important;
-  right: unset !important;
-  bottom: unset !important;
-  left: unset !important;
+  position: relative;
+  top: unset;
+  right: unset;
+  bottom: unset;
+  left: unset;
   cursor: default;
   zoom: 130%;
 }
@@ -286,11 +293,11 @@ body {
 }
 
 .board-selected .icon-computer {
-  position: relative !important;
-  top: unset !important;
-  right: unset !important;
-  bottom: unset !important;
-  left: unset !important;
+  position: relative;
+  top: unset;
+  right: unset;
+  bottom: unset;
+  left: unset;
   width: 110px;
   height: 110px;
   margin-bottom: 10px;

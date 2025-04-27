@@ -1,82 +1,71 @@
-import React, { useState, useEffect } from 'react'
-import { useGameStore, GameChoice } from '../store/useGameStore'
-import { includes, random } from 'lodash'
+import { useEffect, useState } from 'react'
+import { useGameStore, useGameLogic } from '../store/useGameStore'
 
-type GameResult = 'user wins' | 'computer wins' | 'tie' | undefined
+function BoardSelected() {
+  // Game state hooks
+  const {
+    userChoice,
+    computerChoice,
+    result,
+    resetGame,
+    setComputerChoice,
+    setResult,
+    updateScore,
+  } = useGameStore((state) => ({
+    userChoice: state.userChoice,
+    computerChoice: state.computerChoice,
+    result: state.result,
+    resetGame: state.resetGame,
+    setComputerChoice: state.setComputerChoice,
+    setResult: state.setResult,
+    updateScore: state.updateScore,
+  }))
 
-const BoardSelected: React.FC = () => {
-  // Local state
-  const [computerChoice, setComputerChoice] = useState<GameChoice>(undefined)
-  const [result, setResult] = useState<GameResult>(undefined)
+  // Game logic
+  const { getComputerChoice, determineWinner } = useGameLogic()
 
-  // Global state from store
-  const userChoice = useGameStore((state) => state.userChoice)
-  const score = useGameStore((state) => state.score)
-  const setScore = useGameStore((state) => state.setScore)
-  const resetUserChoice = useGameStore((state) => state.resetUserChoice)
+  // Loading state to handle computer's "thinking" time
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Available game choices
-  const choices: GameChoice[] = React.useMemo(
-    () => ['rock', 'paper', 'scissors', 'lizard', 'spock'],
-    [],
-  )
-
-  // Function to get random computer selection
-  const computerSelection = React.useCallback((): GameChoice => {
-    const numericChoice = random(0, choices.length - 1)
-    return choices[numericChoice]
-  }, [choices])
-
-  // Function to compare results and determine winner
-  const compareResults = (
-    userChoice: GameChoice,
-    computerChoice: GameChoice,
-  ): GameResult => {
-    const winningMap: Record<string, GameChoice[]> = {
-      rock: ['lizard', 'scissors'],
-      paper: ['rock', 'spock'],
-      scissors: ['paper', 'lizard'],
-      lizard: ['spock', 'paper'],
-      spock: ['scissors', 'rock'],
-    }
-
-    if (includes(winningMap[userChoice!], computerChoice)) return 'user wins'
-    if (userChoice === computerChoice) return 'tie'
-    return 'computer wins'
-  }
-
-  // Initialize the game when component mounts
+  // Handle game logic when component mounts
   useEffect(() => {
-    const init = async () => {
-      // Wait a bit before computer makes a selection (simulates thinking)
+    const calculateResult = async () => {
+      // Simulate thinking delay
       await new Promise((resolve) => setTimeout(resolve, 500))
 
-      // Get computer choice and determine result
-      const compChoice = computerSelection()
-      const gameResult = compareResults(userChoice, compChoice)
-
-      // Update state
+      // Calculate computer choice and result
+      const compChoice = getComputerChoice()
       setComputerChoice(compChoice)
+
+      const gameResult = determineWinner(userChoice, compChoice)
       setResult(gameResult)
 
-      // Update score if not a tie
-      if (gameResult === 'tie') return
-      setScore(gameResult === 'user wins' ? score + 1 : score - 1)
+      // Update score based on result (skip if tie)
+      if (gameResult !== 'tie') {
+        updateScore(gameResult)
+      }
+
+      setIsLoading(false)
     }
 
-    init()
-  }, [userChoice, computerSelection, score, setScore]) // Run when user choice changes
+    calculateResult()
+  }, [
+    userChoice,
+    setComputerChoice,
+    setResult,
+    updateScore,
+    getComputerChoice,
+    determineWinner,
+  ])
 
-  // Handler for Play Again button
   const playAgain = () => {
-    resetUserChoice()
+    resetGame()
   }
 
+  const resultsAreIn = userChoice && computerChoice
+
   return (
-    <div
-      className="board-selected"
-      data-results-are-in={Boolean(userChoice && computerChoice)}
-    >
+    <div className="board-selected" data-results-are-in={resultsAreIn}>
       <div className="selections">
         <div className="selection-box">
           <div className={`icon ${result === 'user wins' ? 'winner' : ''}`}>
@@ -89,15 +78,19 @@ const BoardSelected: React.FC = () => {
 
         <div className="selection-box">
           <div className={`icon ${result === 'computer wins' ? 'winner' : ''}`}>
-            <div
-              className={`icon-computer ${computerChoice ? `icon-computer-selected icon-${computerChoice}` : ''}`}
-            ></div>
+            {isLoading ? (
+              <div className="icon-computer"></div>
+            ) : (
+              <div
+                className={`icon-computer icon-computer-selected icon-${computerChoice}`}
+              ></div>
+            )}
           </div>
           <div className="selection-text computer-text">The house picked</div>
         </div>
       </div>
 
-      {userChoice && computerChoice && (
+      {resultsAreIn && !isLoading && (
         <div className="results">
           {result === 'user wins' && (
             <div className="results-text">You win</div>

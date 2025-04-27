@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-const Rules: React.FC = () => {
+function Rules() {
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -13,10 +13,10 @@ const Rules: React.FC = () => {
         <div className="rules-modal">
           <div className="modal-title">rules</div>
           <div className="modal-image">
-            <img src="./assets/images/image-rules-bonus.svg" alt="rules" />
+            <img src="/assets/images/image-rules-bonus.svg" alt="rules" />
           </div>
           <div className="modal-close" onClick={() => setShowModal(false)}>
-            <img src="./assets/images/icon-close.svg" alt="close" />
+            <img src="/assets/images/icon-close.svg" alt="close" />
           </div>
         </div>
       )}
