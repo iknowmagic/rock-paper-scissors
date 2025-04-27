@@ -1,0 +1,11 @@
+@import './1-base/_normalize.css';
+@import './1-base/_colors.css';
+@import './1-base/_breakpoints.css';
+@import './1-base/_typography.css';
+@import './1-base/_base.css';
+
+@import './2-components/_main.css';
+@import './2-components/_header.css';
+@import './2-components/_board.css';
+@import './2-components/_board-selected.css';
+@import './2-components/_rules.css';

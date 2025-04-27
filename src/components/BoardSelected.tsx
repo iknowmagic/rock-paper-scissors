@@ -35,7 +35,7 @@ function BoardSelected({ onPlayAgain }: BoardSelectedProps) {
         </div>
       </div>
 
-      {userChoice && computerChoice && (
+      {result && (
         <div className="results">
           <div className="results-text">
             {result === 'win' && 'You win'}

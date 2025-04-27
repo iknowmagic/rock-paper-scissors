@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 375px;
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: var(--normal);
+  color: #fff;
+  background: radial-gradient(
+    134.34% 134.34% at 50% 0%,
+    #1f3757 0%,
+    #131537 100%
+  );
+  text-rendering: geometricPrecision;
+}

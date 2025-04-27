@@ -1,0 +1,385 @@
+/* For the @extend .board; we need to copy all base board styles */
+.board-selected {
+  position: relative;
+  display: block !important;
+  justify-content: center;
+  width: 311px;
+  height: 305px;
+  margin-top: 0 !important;
+}
+
+/* Copy the icon styles from board.css to make them available to board-selected */
+.board-selected .icon-user.icon-rock,
+.board-selected .icon-user.icon-paper,
+.board-selected .icon-user.icon-scissors,
+.board-selected .icon-user.icon-lizard,
+.board-selected .icon-user.icon-spock,
+.board-selected .icon-computer-selected.icon-rock,
+.board-selected .icon-computer-selected.icon-paper,
+.board-selected .icon-computer-selected.icon-scissors,
+.board-selected .icon-computer-selected.icon-lizard,
+.board-selected .icon-computer-selected.icon-spock {
+  position: absolute;
+  width: 96px;
+  height: 92px;
+  background-image: linear-gradient(0deg, #f3f3f3 0%, #dadada 98.34%);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+/* Copy the before pseudo-element styles */
+.board-selected .icon-user.icon-rock::before,
+.board-selected .icon-user.icon-paper::before,
+.board-selected .icon-user.icon-scissors::before,
+.board-selected .icon-user.icon-lizard::before,
+.board-selected .icon-user.icon-spock::before,
+.board-selected .icon-computer-selected.icon-rock::before,
+.board-selected .icon-computer-selected.icon-paper::before,
+.board-selected .icon-computer-selected.icon-scissors::before,
+.board-selected .icon-computer-selected.icon-lizard::before,
+.board-selected .icon-computer-selected.icon-spock::before {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: block;
+  width: 96px;
+  height: 92px;
+  content: '';
+  background: rgba(186, 191, 212, 0.6);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+/* Copy rock styles */
+.board-selected .icon-user.icon-rock,
+.board-selected .icon-computer-selected.icon-rock {
+  border: 10px solid #9d1634;
+}
+
+.board-selected .icon-user.icon-rock::after,
+.board-selected .icon-computer-selected.icon-rock::after {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: block;
+  width: 76px;
+  height: 72px;
+  content: '';
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.0966455) 0%,
+      rgba(255, 255, 255, 0.0001) 100%
+    ),
+    url('/assets/images/icon-rock.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    100%,
+    32px 31px;
+  border: 10px solid #db2e4d;
+  border-radius: 50%;
+}
+
+/* Copy paper styles */
+.board-selected .icon-user.icon-paper,
+.board-selected .icon-computer-selected.icon-paper {
+  border: 10px solid #2a45c2;
+}
+
+.board-selected .icon-user.icon-paper::after,
+.board-selected .icon-computer-selected.icon-paper::after {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: block;
+  width: 76px;
+  height: 72px;
+  content: '';
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.0966455) 0%,
+      rgba(255, 255, 255, 0.0001) 100%
+    ),
+    url('/assets/images/icon-paper.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    100%,
+    32px 39px;
+  border: 10px solid #4664f4;
+  border-radius: 50%;
+}
+
+/* Copy scissors styles */
+.board-selected .icon-user.icon-scissors,
+.board-selected .icon-computer-selected.icon-scissors {
+  border: 10px solid #c76c1b;
+}
+
+.board-selected .icon-user.icon-scissors::after,
+.board-selected .icon-computer-selected.icon-scissors::after {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: block;
+  width: 76px;
+  height: 72px;
+  content: '';
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.0966455) 0%,
+      rgba(255, 255, 255, 0.0001) 100%
+    ),
+    url('/assets/images/icon-scissors.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    100%,
+    35px 35px;
+  border: 10px solid #eb9f0e;
+  border-radius: 50%;
+}
+
+/* Copy lizard styles */
+.board-selected .icon-user.icon-lizard,
+.board-selected .icon-computer-selected.icon-lizard {
+  border: 10px solid #5f37a8;
+}
+
+.board-selected .icon-user.icon-lizard::after,
+.board-selected .icon-computer-selected.icon-lizard::after {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: block;
+  width: 76px;
+  height: 72px;
+  content: '';
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.0966455) 0%,
+      rgba(255, 255, 255, 0.0001) 100%
+    ),
+    url('/assets/images/icon-lizard.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    100%,
+    39px 38px;
+  border: 10px solid #834ee3;
+  border-radius: 50%;
+}
+
+/* Copy spock styles */
+.board-selected .icon-user.icon-spock,
+.board-selected .icon-computer-selected.icon-spock {
+  border: 10px solid #2d8dab;
+}
+
+.board-selected .icon-user.icon-spock::after,
+.board-selected .icon-computer-selected.icon-spock::after {
+  position: absolute;
+  top: -14px;
+  left: -10px;
+  display: block;
+  width: 76px;
+  height: 72px;
+  content: '';
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.0966455) 0%,
+      rgba(255, 255, 255, 0.0001) 100%
+    ),
+    url('/assets/images/icon-spock.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    100%,
+    29px 39px;
+  border: 10px solid #3fb7cd;
+  border-radius: 50%;
+}
+
+/* Board-selected unique styles */
+.board-selected .selections {
+  display: flex;
+  flex: 2;
+  justify-content: center;
+}
+
+.board-selected .icon-user {
+  position: relative !important;
+  top: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  left: unset !important;
+  cursor: default;
+  zoom: 130%;
+}
+
+.board-selected .icon-computer {
+  position: relative !important;
+  top: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  left: unset !important;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 10px;
+  cursor: default;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.board-selected .icon-computer.icon-computer-selected {
+  margin-bottom: 0;
+  zoom: 130%;
+}
+
+.board-selected .selection-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-selected .selection-box .icon {
+  width: 125px;
+  height: 120px;
+}
+
+.board-selected .selection-box .selection-text {
+  margin-top: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #fff;
+  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+  text-transform: uppercase;
+  letter-spacing: 1.875px;
+  white-space: nowrap;
+}
+
+.board-selected .selection-box + .selection-box {
+  margin-left: 42.32px;
+}
+
+.board-selected .results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  text-transform: uppercase;
+}
+
+.board-selected .results .results-text {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 67px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+}
+
+.board-selected .results .play-again {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 48px;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  color: #3b4262;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  background: linear-gradient(0deg, #f3f3f3 0%, #fff 100%);
+  border-radius: 8px;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.196706);
+}
+
+.board-selected .results .play-again:hover {
+  color: #db2e4d;
+}
+
+.board-selected .winner {
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 18px rgba(255, 255, 255, 0.025),
+    0 0 0 calc(18px + 33px) rgba(255, 255, 255, 0.025),
+    0 0 0 calc(18px + 33px + 32px) rgba(255, 255, 255, 0.025);
+}
+
+@media (min-width: 769px) {
+  .board-selected {
+    width: 100% !important;
+    margin-top: 72px !important;
+    zoom: 100% !important;
+  }
+
+  .board-selected .icon-user {
+    zoom: 300%;
+  }
+
+  .board-selected .icon-computer {
+    width: 224.63px;
+    height: 224.63px;
+  }
+
+  .board-selected .icon-computer.icon-computer-selected {
+    zoom: 300%;
+  }
+
+  .board-selected .selection-box {
+    flex-direction: column-reverse;
+  }
+
+  .board-selected .selection-box .icon {
+    width: 288px;
+    height: 276px;
+  }
+
+  .board-selected .selection-box .selection-text {
+    margin-top: 0;
+    margin-bottom: 78px;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 3px;
+  }
+
+  .board-selected .selection-box .selection-text.computer-text {
+    padding-right: 53px;
+  }
+
+  .board-selected .selection-box + .selection-box {
+    margin-left: 153px;
+  }
+
+  .board-selected.results-are-in .selection-box .selection-text.computer-text {
+    padding-right: 0;
+  }
+
+  .board-selected.results-are-in .selection-box + .selection-box {
+    margin-left: 352px;
+  }
+
+  .board-selected .results {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    margin-top: 130px;
+    margin-left: -110px;
+  }
+
+  .board-selected .winner {
+    box-shadow:
+      0 0 0 64px rgba(255, 255, 255, 0.025),
+      0 0 0 calc(120px) rgba(255, 255, 255, 0.025),
+      0 0 0 calc(202px) rgba(255, 255, 255, 0.025);
+  }
+}
