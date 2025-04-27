@@ -1,127 +1,85 @@
-# ReactCraft
+# Rock Paper Scissors Lizard Spock Game
 
-```
- ######                              #####
- #     # ######   ##    ####  ##### #     # #####    ##   ###### #####
- #     # #       #  #  #    #   #   #       #    #  #  #  #        #
- ######  #####  #    # #        #   #       #    # #    # #####    #
- #   #   #      ###### #        #   #       #####  ###### #        #
- #    #  #      #    # #    #   #   #     # #   #  #    # #        #
- #     # ###### #    #  ####    #    #####  #    # #    # #        #
+A React implementation of the expanded Rock Paper Scissors game from The Big Bang Theory, ported from a Vue.js codebase.
 
-```
+## Project Overview
 
-## Vite + React + TypeScript + TailwindCSS + DaisyUI + ESLint + Prettier + Vitest + Commitizen + Husky
+This project is a React/TypeScript port of a Vue.js Rock Paper Scissors Lizard Spock game. The implementation prioritizes maintaining the exact same layout, styling, and user experience from the original Vue application.
 
-This project is a custom Vite template that integrates React, TypeScript, ESLint, Prettier, TailwindCSS, DaisyUI, and more. It provides a robust starting point for building modern web applications with best practices.
+## Key Features
 
-## Features
+- Standard CSS instead of TailwindCSS for accurate style reproduction
+- Zustand for state management (replacing Vuex)
+- Game logic moved from Vue components to React hooks
+- Responsive design that matches the original exactly
 
-- **React 19**: The latest version of React for building user interfaces.
-- **TypeScript**: Strongly typed JavaScript for better developer experience.
-- **Vite**: Fast and modern build tool with HMR (Hot Module Replacement).
-- **TailwindCSS**: Utility-first CSS framework for rapid UI development.
-- **DaisyUI**: TailwindCSS components for faster UI building.
-- **ESLint**: Linting for consistent and error-free code.
-- **Prettier**: Code formatting for clean and readable code.
-- **Husky & Lint-Staged**: Pre-commit hooks to ensure code quality.
-- **Vitest**: Unit testing framework with JSDOM support.
-- **Commitizen & Commitlint**: Standardized commit messages with an interactive prompt.
+## Game Rules
 
-## Getting Started
+This game expands on the traditional Rock Paper Scissors with two additional moves:
 
-1. **Clone the repository**:
+- Rock crushes Scissors and crushes Lizard
+- Paper covers Rock and disproves Spock
+- Scissors cuts Paper and decapitates Lizard
+- Lizard poisons Spock and eats Paper
+- Spock smashes Scissors and vaporizes Rock
 
-   ```bash
-   git clone <repository-url>
-   cd react-ts-custom
+## Setup Instructions
+
+1. Clone the repository
+2. Install dependencies:
    ```
-
-2. **Install dependencies**:
-
-   ```bash
    npm install
    ```
-
-3. **Start the development server**:
-
-   ```bash
+3. Run the development server:
+   ```
    npm run dev
    ```
-
-4. **Build for production**:
-
-   ```bash
+4. Build for production:
+   ```
    npm run build
    ```
 
-5. **Run tests**:
-
-   ```bash
-   npm run test
-   ```
-
-6. **Lint and format code**:
-
-   ```bash
-   npm run lint
-   ```
-
-## Development Workflow
-
-- **Pre-commit hooks**: Automatically runs tests and lints staged files before committing.
-- **Commit messages**: Use `npm run commit` for an interactive commit message prompt.
-- **Editor integration**: ESLint and Prettier are configured to work seamlessly with VS Code.
-
-## Expanding the ESLint Configuration
-
-For production applications, consider enabling type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    ...tseslint.configs.recommendedTypeChecked,
-    ...tseslint.configs.strictTypeChecked,
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-## Customizations
-
-This template includes the following customizations:
-
-- **TailwindCSS with DaisyUI**: Pre-configured for rapid UI development.
-- **Husky & Lint-Staged**: Ensures code quality before committing.
-- **Commitizen & Commitlint**: Enforces conventional commit messages.
-- **Vitest**: Pre-configured for unit testing with JSDOM.
-
-## File Structure
+## Project Structure
 
 ```
-react-ts-custom/
-├── src/                # Application source code
-│   ├── components/     # React components
-│   ├── main.tsx        # Application entry point
-│   ├── main.css        # TailwindCSS styles
-├── .husky/             # Git hooks
-├── .vscode/            # VS Code settings
-├── tsconfig.json       # TypeScript configuration
-├── vite.config.ts      # Vite configuration
-├── package.json        # Project metadata and scripts
-└── README.md           # Project documentation
+├── public/
+│   └── assets/
+│       └── images/       # Game icons and images
+├── src/
+│   ├── components/
+│   │   ├── Board.tsx           # Game board with options
+│   │   ├── BoardSelected.tsx   # Game result display
+│   │   ├── GameHeader.tsx      # Score header
+│   │   └── Rules.tsx           # Rules modal
+│   ├── pages/
+│   │   └── Home.tsx            # Main game page
+│   ├── store/
+│   │   └── useGameStore.tsx    # Zustand store
+│   ├── App.tsx                 # Main app component
+│   ├── main.css                # All styles for the game
+│   └── main.tsx                # Entry point
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-## Contributing
+## Notable Changes from Vue Version
 
-Feel free to fork this repository and submit pull requests. Contributions are welcome!
+1. Replaced Vuex with Zustand for simpler state management
+2. Moved from SCSS to regular CSS with identical styling
+3. Implemented game logic directly in React components with hooks
+4. Maintained exact positioning and layout of elements
+5. Recreated all transitions and animations
 
-## License
+## Assets
 
-This project is licensed under the [MIT License](LICENSE).
+All images and icons are stored in the `public/assets/images` directory and are referenced in the same way as the original Vue application.
+
+## How To Play
+
+1. Choose one of the five options: Rock, Paper, Scissors, Lizard, or Spock
+2. The computer will randomly select its choice
+3. Winner is determined based on the game rules
+4. Score is updated: +1 for winning, -1 for losing
+5. Click "Play Again" to start a new round

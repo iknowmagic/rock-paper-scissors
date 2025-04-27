@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+// Type for game choices
 export type GameChoice =
   | 'rock'
   | 'paper'
@@ -9,6 +10,7 @@ export type GameChoice =
   | 'spock'
   | undefined
 
+// Define the shape of our store
 interface GameState {
   score: number
   userChoice: GameChoice
@@ -17,21 +19,19 @@ interface GameState {
   resetUserChoice: () => void
 }
 
-// Create a Zustand store that persists to localStorage
-const useGameStore = create<GameState>()(
+// Create the store with persistence
+export const useGameStore = create<GameState>()(
   persist(
     (set) => ({
       score: 0,
       userChoice: undefined,
       setScore: (score) => set({ score }),
-      setUserChoice: (userChoice) => set({ userChoice }),
+      setUserChoice: (choice) => set({ userChoice: choice }),
       resetUserChoice: () => set({ userChoice: undefined }),
     }),
     {
-      name: 'game-storage', // Name for localStorage key
+      name: 'game-storage', // Storage key
       partialize: (state) => ({ score: state.score }), // Only persist score
     },
   ),
 )
-
-export default useGameStore
