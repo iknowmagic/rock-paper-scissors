@@ -286,21 +286,33 @@
 }
 
 .board-selected .results .play-again {
-  /* ...existing styles... */
+  margin-top: 16px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  color: hsl(229, 25%, 31%);
+  text-align: center;
+  letter-spacing: 2.5px;
+  background-color: white;
+  border-radius: 8px;
+  cursor: pointer;
   transition:
     color 0.2s ease,
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .board-selected .results .play-again:hover {
-  /* ...existing styles... */
+  background-color: #f8f8f8;
   transform: translateY(-2px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .board-selected .results .play-again:active {
   transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Add transitions for results animations */
