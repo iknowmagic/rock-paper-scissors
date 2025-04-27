@@ -139,7 +139,7 @@ body {
   & .board-bg {
     width: 227px;
     height: 227px;
-    background-image: url('./assets/images/bg-pentagon.svg');
+    background-image: url('/assets/images/bg-pentagon.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 227px 227px;
@@ -187,7 +187,7 @@ body {
           rgba(255, 255, 255, 0.0966455) 0%,
           rgba(255, 255, 255, 0.0001) 100%
         ),
-        url('./assets/images/icon-rock.svg');
+        url('/assets/images/icon-rock.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size:
@@ -236,7 +236,7 @@ body {
           rgba(255, 255, 255, 0.0966455) 0%,
           rgba(255, 255, 255, 0.0001) 100%
         ),
-        url('./assets/images/icon-paper.svg');
+        url('/assets/images/icon-paper.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size:
@@ -284,7 +284,7 @@ body {
           rgba(255, 255, 255, 0.0966455) 0%,
           rgba(255, 255, 255, 0.0001) 100%
         ),
-        url('./assets/images/icon-scissors.svg');
+        url('/assets/images/icon-scissors.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size:
@@ -333,7 +333,7 @@ body {
           rgba(255, 255, 255, 0.0966455) 0%,
           rgba(255, 255, 255, 0.0001) 100%
         ),
-        url('./assets/images/icon-lizard.svg');
+        url('/assets/images/icon-lizard.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size:
@@ -382,7 +382,7 @@ body {
           rgba(255, 255, 255, 0.0966455) 0%,
           rgba(255, 255, 255, 0.0001) 100%
         ),
-        url('./assets/images/icon-spock.svg');
+        url('/assets/images/icon-spock.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size:
@@ -656,7 +656,7 @@ body {
     top: 154px;
     left: 50%;
     width: 400px;
-    height: 461px;
+    height: px;
     padding: 32px 32px 47px;
     margin-left: -200px;
 

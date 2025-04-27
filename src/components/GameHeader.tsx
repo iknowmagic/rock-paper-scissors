@@ -1,18 +1,21 @@
-import { useGameStore } from '../store/useGameStore'
+interface GameHeaderProps {
+  score: number
+}
 
-function GameHeader() {
-  const score = useGameStore((state) => state.score)
-
+function GameHeader({ score }: GameHeaderProps) {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header-logo">
-        <img src="/assets/images/logo-bonus.svg" alt="logo" />
+        <img
+          src="/assets/images/logo-bonus.svg"
+          alt="Rock Paper Scissors Logo"
+        />
       </div>
       <div className="header-score">
-        <div className="score-text">score</div>
-        <div className="score-number">{score}</div>
+        <span className="score-text">Score</span>
+        <span className="score-number">{score}</span>
       </div>
-    </div>
+    </header>
   )
 }
 
