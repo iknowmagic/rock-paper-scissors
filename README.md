@@ -1,19 +1,16 @@
 # Rock Paper Scissors Lizard Spock Game
 
-A React implementation of the expanded Rock Paper Scissors game, adapted from an earlier Vue.js implementation.
+A modern implementation of the extended Rock Paper Scissors game, built with React and TypeScript.
 
 ## Project Overview
 
-This project is a React/TypeScript version of a Rock Paper Scissors Lizard Spock game. The implementation prioritizes maintaining the exact same layout, styling, and user experience from the original application.
+This web application features:
 
-## Key Features
-
-- Modular CSS architecture for better organization and maintainability
-- Component-based styling with logical folder structure
-- Zustand for lightweight state management (replacing Vuex)
-- Responsive design with mobile and desktop layouts
-- Smooth transitions and animations
-- Fixed positioning elements that work across screen sizes
+- React with TypeScript
+- Zustand for state management
+- Smooth transitions and animations enhancing user interaction
+- Responsive design optimized for mobile, tablet, and desktop
+- Modern component architecture with modular CSS
 
 ---
 
